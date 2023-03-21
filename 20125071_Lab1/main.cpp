@@ -1,98 +1,50 @@
-#include <GL/glut.h>
-#include<iostream>
-using namespace std;
-int rx = 100, ry = 125;
-int xCenter = 250, yCenter = 250;
+#include "main.h"
 
-void myinit(void)
-{
-	glClearColor(1.0, 1.0, 1.0, 0.0);
-	glMatrixMode(GL_PROJECTION);
-	glLoadIdentity();
-	gluOrtho2D(0.0, 640.0, 0.0, 480.0);
-}
+int MAX_X;
+int MAX_Y;
 
-void setPixel(GLint x, GLint y)
-{
-	glBegin(GL_POINTS);
-	glVertex2i(x, y);
-	glEnd();
-}
-void ellipseMidPoint()
-{
-	float x = 0;
-	float y = ry;
-	float p1 = ry * ry - (rx * rx) * ry + (rx * rx) * (0.25);
-	float dx = 2 * (ry * ry) * x;
-	float dy = 2 * (rx * rx) * y;
-	glColor3ub(rand() % 255, rand() % 255, rand() % 255);
-	while (dx < dy)
-	{
-		setPixel(xCenter + x, yCenter + y);
-		setPixel(xCenter - x, yCenter + y);
-		setPixel(xCenter + x, yCenter - y);
-		setPixel(xCenter - x, yCenter - y);
-		if (p1 < 0)
-		{
-			x = x + 1;
-			dx = 2 * (ry * ry) * x;
-			p1 = p1 + dx + (ry * ry);
-		}
-		else
-		{
-			x = x + 1;
-			y = y - 1;
-			dx = 2 * (ry * ry) * x;
-			dy = 2 * (rx * rx) * y;
-			p1 = p1 + dx - dy + (ry * ry);
-		}
-	}
-	glFlush();
+Shape* Process::currentShape = 0;
 
-	float p2 = (ry * ry) * (x + 0.5) * (x + 0.5) + (rx * rx) * (y
-		- 1) * (y - 1) - (rx * rx) * (ry * ry);
-	glColor3ub(rand() % 255, rand() % 255, rand() % 255);
-	while (y > 0)
-	{
-		setPixel(xCenter + x, yCenter + y);
-		setPixel(xCenter - x, yCenter + y);
-		setPixel(xCenter + x, yCenter - y);
-		setPixel(xCenter - x, yCenter - y);
-		if (p2 > 0)
-		{
-			x = x;
-			y = y - 1;
-			dy = 2 * (rx * rx) * y;
-			p2 = p2 - dy + (rx * rx);
-		}
-		else
-		{
-			x = x + 1;
-			y = y - 1;
-			dy = dy - 2 * (rx * rx);
-			dx = dx + 2 * (ry * ry);
-			p2 = p2 + dx -
-				dy + (rx * rx);
-		}
-	}
-	glFlush();
-}
-void display()
+void renderWindow(void)
 {
 	glClear(GL_COLOR_BUFFER_BIT);
-	glColor3f(1.0, 0.0, 0.0);
-	glPointSize(2.0);
-	ellipseMidPoint();
-	glFlush();
+	glLoadIdentity();
+	if (!Process::currentShape)
+	{
+		Process::currentShape = new IsosRightTriangle(Point(100, 100), Point(500, 300));
+	}
+	if (Process::currentShape)
+	{
+		Process::currentShape->draw();
+	}
+	delete Process::currentShape;
 }
-int main(int argc, char** argv)
+
+void reshape(int w, int h)
+{
+	glViewport(0, 0, w, h);
+	glLoadIdentity();
+	glMatrixMode(GL_PROJECTION);
+	gluOrtho2D(MIN_X, w, MIN_Y, h);
+	MAX_X = w;
+	MAX_Y = h;
+	glMatrixMode(GL_MODELVIEW);
+}
+
+int main(int argc, char **argv)
 {
 	glutInit(&argc, argv);
-	glutInitWindowSize(640, 480);
-	glutInitWindowPosition(10, 10);
-	glutCreateWindow("User_Name");
-	myinit();
-	glutDisplayFunc(display);
+	glutInitDisplayMode(GLUT_RGB);
+	glutInitWindowPosition(0, 0);
+	glutInitWindowSize(600, 600);
+	glutCreateWindow("Coloring 2D Object");
+	glClearColor(0.0, 0.0, 0.0, 0.0);
+	glutDisplayFunc(renderWindow);
+	glutReshapeFunc(reshape);
+
+	Process::initMenu();
+
 	glutMainLoop();
-	return 0;
+
+	return 1;
 }
