@@ -11,7 +11,7 @@ void renderWindow(void)
 	glLoadIdentity();
 	if (!Process::currentShape)
 	{
-		Process::currentShape = new IsosRightTriangle(Point(100, 100), Point(500, 300));
+		Process::currentShape = new Circle(Point(200, 200), Point(300, 300));
 	}
 	if (Process::currentShape)
 	{

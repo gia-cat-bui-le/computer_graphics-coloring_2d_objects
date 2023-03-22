@@ -130,6 +130,8 @@
     <ClCompile Include="main.cpp" />
     <ClCompile Include="process\process.cpp" />
     <ClCompile Include="RGBColor\rgbColor.cpp" />
+    <ClCompile Include="shape\circle\circle.cpp" />
+    <ClCompile Include="shape\equilTriangle\equilTriangle.cpp" />
     <ClCompile Include="shape\isosRightTriangle\isosRightTriangle.cpp" />
     <ClCompile Include="Shape\Rectangle\rectangle.cpp" />
     <ClCompile Include="Shape\shape.cpp" />
@@ -140,6 +142,8 @@
     <ClInclude Include="main.h" />
     <ClInclude Include="process\process.h" />
     <ClInclude Include="RGBColor\rgbColor.h" />
+    <ClInclude Include="shape\circle\circle.h" />
+    <ClInclude Include="shape\equilTriangle\equilTriangle.h" />
     <ClInclude Include="shape\isosRightTriangle\isosRightTriangle.h" />
     <ClInclude Include="Shape\Rectangle\rectangle.h" />
     <ClInclude Include="Shape\shape.h" />
