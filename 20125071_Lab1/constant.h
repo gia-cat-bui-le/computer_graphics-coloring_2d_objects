@@ -28,6 +28,8 @@
 #define COLOR_BLUE 71
 #define COLOR_GREEN 72
 
+#define MY_PI 3.14159265358979323846
+
 const int MIN_X = 0;
 extern int MAX_X;
 const int MIN_Y = 0;

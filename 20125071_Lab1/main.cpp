@@ -4,21 +4,17 @@ int MAX_X;
 int MAX_Y;
 
 Shape* Process::currentShape = 0;
-
-void renderWindow(void)
-{
-	glClear(GL_COLOR_BUFFER_BIT);
-	glLoadIdentity();
-	if (!Process::currentShape)
-	{
-		Process::currentShape = new Circle(Point(200, 200), Point(300, 300));
-	}
-	if (Process::currentShape)
-	{
-		Process::currentShape->draw();
-	}
-	delete Process::currentShape;
-}
+bool Process::isDrawing = 0;
+bool Process::isColoring = 0;
+bool Process::chooseShape = 0;
+RGBColor Process::currentColor = BLACK;
+bool Process::rerenderScene = 1;
+bool Process::isClean = 1;
+Point Process::start;
+Point Process::end;
+int Process::shape = 0;
+bool Process::chooseColor = 0;
+bool Process::chooseStart = 0;
 
 void reshape(int w, int h)
 {
@@ -29,6 +25,7 @@ void reshape(int w, int h)
 	MAX_X = w;
 	MAX_Y = h;
 	glMatrixMode(GL_MODELVIEW);
+	glLoadIdentity();
 }
 
 int main(int argc, char **argv)
@@ -39,8 +36,9 @@ int main(int argc, char **argv)
 	glutInitWindowSize(600, 600);
 	glutCreateWindow("Coloring 2D Object");
 	glClearColor(0.0, 0.0, 0.0, 0.0);
-	glutDisplayFunc(renderWindow);
+	glutDisplayFunc(Process::renderScene);
 	glutReshapeFunc(reshape);
+	glutMouseFunc(Process::processMouseEvent);
 
 	Process::initMenu();
 

@@ -36,6 +36,7 @@ void Circle::draw()
     glFlush();
 }
 
-double Circle::getRadius() {
+double Circle::getRadius()
+{
     return sqrt(double((start.x - end.x) * (start.x - end.x)) + double((start.y - end.y) * (start.y - end.y)));
 }

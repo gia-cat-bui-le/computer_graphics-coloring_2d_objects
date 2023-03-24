@@ -6,8 +6,7 @@
 #include <cmath>
 
 #include "../shape.h"
-
-# define MY_PI 3.14159265358979323846
+#include "../../constant.h"
 
 class Circle : public Shape
 {

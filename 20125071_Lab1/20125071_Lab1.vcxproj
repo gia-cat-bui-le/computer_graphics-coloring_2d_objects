@@ -130,24 +130,46 @@
     <ClCompile Include="main.cpp" />
     <ClCompile Include="process\process.cpp" />
     <ClCompile Include="RGBColor\rgbColor.cpp" />
+    <ClCompile Include="shape\arrow\arrow.cpp" />
     <ClCompile Include="shape\circle\circle.cpp" />
+    <ClCompile Include="shape\division\division.cpp" />
+    <ClCompile Include="shape\ellipse\ellipse.cpp" />
     <ClCompile Include="shape\equilTriangle\equilTriangle.cpp" />
     <ClCompile Include="shape\isosRightTriangle\isosRightTriangle.cpp" />
+    <ClCompile Include="shape\line\line.cpp" />
+    <ClCompile Include="shape\minus\minus.cpp" />
+    <ClCompile Include="shape\multiply\multiply.cpp" />
+    <ClCompile Include="shape\plus\plus.cpp" />
+    <ClCompile Include="shape\polygon\hexagon\hexagon.cpp" />
+    <ClCompile Include="shape\polygon\pentagon\pentagon.cpp" />
+    <ClCompile Include="shape\polygon\polygon.cpp" />
     <ClCompile Include="Shape\Rectangle\rectangle.cpp" />
     <ClCompile Include="Shape\shape.cpp" />
     <ClCompile Include="shape\square\square.cpp" />
+    <ClCompile Include="shape\star\star.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="constant.h" />
     <ClInclude Include="main.h" />
     <ClInclude Include="process\process.h" />
     <ClInclude Include="RGBColor\rgbColor.h" />
+    <ClInclude Include="shape\arrow\arrow.h" />
     <ClInclude Include="shape\circle\circle.h" />
+    <ClInclude Include="shape\division\division.h" />
+    <ClInclude Include="shape\ellipse\ellipse.h" />
     <ClInclude Include="shape\equilTriangle\equilTriangle.h" />
     <ClInclude Include="shape\isosRightTriangle\isosRightTriangle.h" />
+    <ClInclude Include="shape\line\line.h" />
+    <ClInclude Include="shape\minus\minus.h" />
+    <ClInclude Include="shape\multiply\multiply.h" />
+    <ClInclude Include="shape\plus\plus.h" />
+    <ClInclude Include="shape\polygon\hexagon\hexagon.h" />
+    <ClInclude Include="shape\polygon\pentagon\pentagon.h" />
+    <ClInclude Include="shape\polygon\polygon.h" />
     <ClInclude Include="Shape\Rectangle\rectangle.h" />
     <ClInclude Include="Shape\shape.h" />
     <ClInclude Include="shape\square\square.h" />
+    <ClInclude Include="shape\star\star.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

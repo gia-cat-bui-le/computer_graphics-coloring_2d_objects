@@ -7,10 +7,5 @@
 #include "constant.h"
 #include "shape/shape.h"
 #include "process/process.h"
-#include "shape/rectangle/rectangle.h"
-#include "shape/square/square.h"
-#include "shape/isosRightTriangle/isosRightTriangle.h"
-#include "shape/equilTriangle/equilTriangle.h"
-#include "shape/circle/circle.h"
 
 #endif // !_MAIN_H_
